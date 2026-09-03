@@ -94,7 +94,7 @@
     }
     .grid {
         display: grid;
-        grid-template-columns: 1.1fr 1fr 0.7fr 0.7fr auto;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 0.5rem;
     }
     .list {

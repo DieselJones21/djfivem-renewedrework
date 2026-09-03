@@ -158,9 +158,9 @@
 <style>
     .overview {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 300px;
+        grid-template-columns: minmax(0, 1fr) 280px;
         grid-template-rows: auto auto minmax(0, 1fr);
-        gap: 0.9rem;
+        gap: 0.75rem;
         height: 100%;
         min-height: 0;
     }
@@ -171,7 +171,7 @@
         gap: 0.8rem;
     }
     .stat {
-        padding: 0.9rem 1rem;
+        padding: 0.7rem 0.9rem;
         position: relative;
         overflow: hidden;
     }
@@ -202,8 +202,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.1rem 1.2rem;
-        gap: 1rem;
+        padding: 0.85rem 1rem;
+        gap: 0.8rem;
     }
     .kicker {
         color: var(--cyan);
@@ -219,7 +219,7 @@
         font-weight: 600;
     }
     .amount {
-        font-size: 2rem;
+        font-size: 1.7rem;
         font-weight: 800;
         letter-spacing: -0.04em;
     }
@@ -245,8 +245,8 @@
         grid-row: 2 / 4;
         display: flex;
         flex-direction: column;
-        gap: 0.7rem;
+        gap: 0.55rem;
         min-height: 0;
-        overflow: auto;
+        overflow: hidden;
     }
 </style>

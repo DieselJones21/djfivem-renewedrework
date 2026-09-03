@@ -90,7 +90,7 @@
     }
     .shell {
         width: min(1480px, 94vw);
-        height: min(860px, 90vh);
+        height: min(900px, 92vh);
         display: flex;
         position: relative;
         overflow: hidden;
