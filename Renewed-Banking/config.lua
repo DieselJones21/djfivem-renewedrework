@@ -11,6 +11,17 @@ Config = {
         scale = 0.80,
         label = 'Envy Bank'
     },
+    -- Personal and job loans must be accepted by a player with this job
+    loans = {
+        enabled = true,
+        job = 'banker',
+        minAmount = 1000,
+        maxPersonal = 75000,
+        maxJob = 250000,
+        interestPercent = 8,
+        terms = { 7, 14, 28, 56 },
+        maxActivePerAccount = 1
+    },
     atms = {
         `prop_atm_01`,
         `prop_atm_02`,

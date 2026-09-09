@@ -14,19 +14,24 @@ end
 local function openBankUI(isAtm)
     SendNUIMessage({action = 'setLoading', status = true})
     nuiHandler(true)
-    lib.callback('renewed-banking:server:initalizeBanking', false, function(accounts)
-        if not accounts then
+    lib.callback('renewed-banking:server:initalizeBanking', false, function(payload)
+        if not payload then
             nuiHandler(false)
             lib.notify({title = locale('bank_name'), description = locale('loading_failed'), type = 'error'})
             return
         end
+        local accounts = payload.accounts or payload
         SetTimeout(1000, function()
             SendNUIMessage({
                 action = 'setVisible',
                 status = isVisible,
                 accounts = accounts,
                 loading = false,
-                atm = isAtm
+                atm = isAtm,
+                loans = payload.loans or {},
+                pendingLoans = payload.pendingLoans or {},
+                isBanker = payload.isBanker or false,
+                loanConfig = payload.loanConfig or {}
             })
         end)
     end)
@@ -79,6 +84,13 @@ CreateThread(function ()
         RegisterNUICallback(bankActions[k], function(data, cb)
             local newTransaction = lib.callback.await('Renewed-Banking:server:'..bankActions[k], false, data)
             cb(newTransaction)
+        end)
+    end
+    local loanActions = { applyLoan = true, repayLoan = true, decideLoan = true }
+    for name in pairs(loanActions) do
+        RegisterNUICallback(name, function(data, cb)
+            local result = lib.callback.await('Renewed-Banking:server:'..name, false, data)
+            cb(result)
         end)
     end
     exports.ox_target:addModel(Config.atms, {{

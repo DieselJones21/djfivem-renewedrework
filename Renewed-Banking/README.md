@@ -27,7 +27,9 @@ The Lua exports, callbacks, SQL, and NUI event names are unchanged. Only the int
 - Transaction search, status filters, category filters, and CSV export
 - Personal / business / shared account switcher
 - Hide-balance toggle, cash-on-hand, ATM compact mode
-- Confirm modal, keyboard shortcuts (`1–5` pages, `Esc` close)
+- Confirm modal, keyboard shortcuts (`1–6` pages, `Esc` close)
+- Personal and job loans that a player with the `banker` job must approve
+- iPad chrome (silver bezel, status bar, home indicator)
 
 ## Exports (unchanged)
 
@@ -42,7 +44,10 @@ exports['Renewed-Banking']:addAccountMember(account, member)
 exports['Renewed-Banking']:removeAccountMember(account, member)
 exports['Renewed-Banking']:getAccountTransactions(account)
 exports['Renewed-Banking']:changeAccountName(account, newName)
+exports['Renewed-Banking']:getAccountLoans(account)
 ```
+
+Set `Config.loans.job = 'banker'` (or your job name). Create that job in your framework so staff can open **Loans → Banker Desk** and approve or deny applications.
 
 ## Rebuild the UI (optional)
 
