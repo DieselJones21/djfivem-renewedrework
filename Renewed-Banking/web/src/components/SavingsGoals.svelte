@@ -110,7 +110,7 @@
         display: block;
         height: 100%;
         background: linear-gradient(90deg, #1ad7c2, #7ef6ff);
-        box-shadow: 0 0 12px rgba(61, 255, 240, 0.45);
+        box-shadow: none;
     }
     footer {
         font-size: 0.78rem;

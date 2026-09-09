@@ -130,9 +130,7 @@
         position: relative;
         overflow: hidden;
         border-radius: 24px;
-        background:
-            radial-gradient(900px 320px at 80% -10%, rgba(61, 255, 240, 0.1), transparent 50%),
-            linear-gradient(180deg, #0b0f14 0%, #07090d 100%);
+        background: linear-gradient(180deg, #0b0f14 0%, #07090d 100%);
         border: 1px solid rgba(255, 255, 255, 0.08);
     }
     .workspace {

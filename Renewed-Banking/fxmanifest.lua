@@ -1,6 +1,6 @@
 fx_version 'cerulean'
 game 'gta5'
-version '2.2.0'
+version '2.3.0'
 
 description 'Renewed Banking — Envy Roleplay UI rework'
 author 'uShifty (original) / Envy Roleplay rework'

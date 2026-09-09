@@ -23,7 +23,7 @@
     img {
         width: 100%;
         height: auto;
-        filter: drop-shadow(0 0 18px rgba(61, 255, 240, 0.35));
+        filter: none;
         object-fit: contain;
     }
     .wordmark {
@@ -38,7 +38,6 @@
         font-size: 0.95rem;
         font-weight: 700;
         color: #f7fbff;
-        text-shadow: 0 0 16px rgba(61, 255, 240, 0.45);
     }
     .sub {
         font-size: 0.62rem;
