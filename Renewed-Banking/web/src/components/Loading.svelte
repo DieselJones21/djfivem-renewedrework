@@ -22,12 +22,12 @@
         border-radius: 18px;
         padding: 1.4rem 1.5rem 1.2rem;
         text-align: center;
-        box-shadow: var(--glow), var(--shadow);
+        box-shadow: var(--shadow);
     }
     img {
         width: 220px;
         margin: 0 auto 1rem;
-        filter: drop-shadow(0 0 16px rgba(61, 255, 240, 0.35));
+        filter: none;
     }
     .bar {
         height: 6px;

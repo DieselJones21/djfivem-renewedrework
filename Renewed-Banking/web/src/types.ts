@@ -43,5 +43,34 @@ export interface RecentRecipient {
     lastAt: number;
 }
 
-export type PageId = "overview" | "transactions" | "bills" | "card" | "accounts";
+export interface Loan {
+    id: number;
+    account: string;
+    accountType: "personal" | "job" | string;
+    accountName?: string;
+    applicantCid: string;
+    applicantName: string;
+    amount: number;
+    interest: number;
+    total: number;
+    remaining: number;
+    termDays: number;
+    reason: string;
+    status: "pending" | "approved" | "active" | "denied" | "paid" | string;
+    bankerCid?: string | null;
+    bankerName?: string | null;
+    createdAt: number;
+    decidedAt?: number | null;
+}
+
+export interface LoanConfig {
+    enabled?: boolean;
+    minAmount: number;
+    maxPersonal: number;
+    maxJob: number;
+    interestPercent: number;
+    terms: number[];
+}
+
+export type PageId = "overview" | "transactions" | "bills" | "loans" | "card" | "accounts";
 export type CardSkin = "envy" | "midnight" | "chrome" | "vice" | "gold" | "obsidian";

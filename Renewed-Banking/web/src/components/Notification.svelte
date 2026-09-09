@@ -18,7 +18,7 @@
         gap: 0.6rem;
         background: #10161e;
         border: 1px solid var(--line-strong);
-        box-shadow: var(--glow);
+        box-shadow: var(--shadow);
         border-radius: 12px;
         padding: 0.75rem 0.95rem;
         max-width: 280px;

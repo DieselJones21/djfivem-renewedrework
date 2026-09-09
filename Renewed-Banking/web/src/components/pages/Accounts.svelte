@@ -75,7 +75,7 @@
         color: inherit;
     }
     .card.active {
-        box-shadow: inset 0 0 0 1px var(--line-strong), var(--glow);
+        box-shadow: inset 0 0 0 1px var(--line-strong);
     }
     .who {
         display: flex;

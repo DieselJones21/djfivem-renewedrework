@@ -3,9 +3,19 @@
  * @param data - Data you wish to send in the NUI Callback
  */
 import { get } from "svelte/store";
-import { accounts } from "../store/stores";
+import { accounts, isBanker, loanConfig, loans, pendingLoans } from "../store/stores";
 import { isEnvBrowser } from "./misc";
-import type { Account, Transaction } from "../types";
+import type { Account, Loan, Transaction } from "../types";
+
+function packState(list?: Account[]) {
+    return {
+        accounts: list || get(accounts),
+        loans: get(loans),
+        pendingLoans: get(pendingLoans),
+        isBanker: get(isBanker),
+        loanConfig: get(loanConfig),
+    };
+}
 
 const identity: string = atob("UmVuZXdlZC1CYW5raW5n");
 
@@ -74,6 +84,86 @@ function mockAction(eventName: string, data: any): Account[] | false {
     return list;
 }
 
+function mockLoan(eventName: string, data: any) {
+    const cfg = get(loanConfig);
+    const list = get(accounts).map((account) => ({
+        ...account,
+        transactions: [...(account.transactions || [])],
+    }));
+    let mine = [...get(loans)];
+    let queue = [...get(pendingLoans)];
+
+    if (eventName === "applyLoan") {
+        const amount = Number(data.amount);
+        const account = list.find((item) => item.id === data.account) || list[0];
+        if (!account || amount < cfg.minAmount) return false;
+        const interest = cfg.interestPercent;
+        const total = Math.floor(amount * (100 + interest) / 100);
+        const loan: Loan = {
+            id: Date.now(),
+            account: account.id,
+            accountType: account.id === list[0].id ? "personal" : "job",
+            accountName: account.name,
+            applicantCid: String(list[0].id),
+            applicantName: list[0].name,
+            amount,
+            interest,
+            total,
+            remaining: total,
+            termDays: Number(data.termDays),
+            reason: String(data.reason || ""),
+            status: "pending",
+            createdAt: Math.floor(Date.now() / 1000),
+        };
+        mine = [loan, ...mine];
+        queue = [loan, ...queue];
+        loans.set(mine);
+        pendingLoans.set(queue);
+        return packState(list);
+    }
+
+    if (eventName === "decideLoan") {
+        if (!get(isBanker)) return false;
+        const decision = data.decision;
+        const update = (loan: Loan) => {
+            if (loan.id !== Number(data.loanId)) return loan;
+            if (decision === "deny") return { ...loan, status: "denied", bankerName: "Preview Banker", decidedAt: Math.floor(Date.now() / 1000) };
+            const target = list.find((item) => item.id === loan.account);
+            if (target) {
+                target.amount = Number(target.amount) + loan.amount;
+                target.transactions.unshift(mockTransaction({
+                    title: "Loan disbursement",
+                    amount: loan.amount,
+                    trans_type: "deposit",
+                    receiver: target.name,
+                    issuer: "Envy Bank",
+                    message: "Approved Envy Bank loan",
+                }));
+            }
+            return { ...loan, status: "active", bankerName: "Preview Banker", decidedAt: Math.floor(Date.now() / 1000) };
+        };
+        mine = mine.map(update);
+        queue = queue.filter((loan) => loan.id !== Number(data.loanId));
+        loans.set(mine);
+        pendingLoans.set(queue);
+        return packState(list);
+    }
+
+    if (eventName === "repayLoan") {
+        const amount = Number(data.amount);
+        const loan = mine.find((item) => item.id === Number(data.loanId));
+        const account = loan && list.find((item) => item.id === loan.account);
+        if (!loan || !account || amount < 1 || Number(account.amount) < amount) return false;
+        account.amount = Number(account.amount) - amount;
+        const remaining = Math.max(0, loan.remaining - amount);
+        mine = mine.map((item) => item.id === loan.id ? { ...item, remaining, status: remaining <= 0 ? "paid" : "active" } : item);
+        loans.set(mine);
+        return packState(list);
+    }
+
+    return packState(list);
+}
+
 export async function fetchNui<T = any>(
     eventName: string,
     data: unknown = {}
@@ -83,6 +173,9 @@ export async function fetchNui<T = any>(
         if (eventName === "playSound") return "ok" as unknown as T;
         if (["deposit", "withdraw", "transfer"].includes(eventName)) {
             return mockAction(eventName, data) as unknown as T;
+        }
+        if (["applyLoan", "repayLoan", "decideLoan"].includes(eventName)) {
+            return mockLoan(eventName, data) as unknown as T;
         }
         return {} as T;
     }

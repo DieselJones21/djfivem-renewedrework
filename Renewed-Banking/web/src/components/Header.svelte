@@ -50,7 +50,7 @@
         padding: 0.2rem 0.2rem 0.9rem;
     }
     h1 {
-        font-size: 1.55rem;
+        font-size: 1.28rem;
         font-weight: 800;
         letter-spacing: -0.03em;
     }

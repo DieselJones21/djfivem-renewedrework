@@ -213,6 +213,33 @@ function GetFrameworkGroups()
     return Jobs, Gangs
 end
 
+function GetPlayerSource(Player)
+    if not Player then return nil end
+    if Framework == 'qb' or Framework == 'qbx' then
+        return Player.PlayerData and Player.PlayerData.source
+    end
+    return Player.source
+end
+
+function PlayerHasJob(Player, jobName)
+    if not Player or not jobName then return false end
+    local jobs = GetJobs(Player)
+    if not jobs then return false end
+    if jobs.name then
+        return jobs.name == jobName
+    end
+    for i = 1, #jobs do
+        if jobs[i].name == jobName then
+            return true
+        end
+    end
+    return false
+end
+
+function IsBanker(Player)
+    return Config.loans and Config.loans.enabled and PlayerHasJob(Player, Config.loans.job)
+end
+
 --Misc Framework Events
 
 AddEventHandler('QBCore:Server:PlayerLoaded', function(Player)

@@ -119,7 +119,7 @@
     }
     .swatch.active {
         border-color: #fff;
-        box-shadow: var(--glow);
+        box-shadow: none;
     }
     .envy { background: linear-gradient(135deg, #0e6f70, #3dfff0); }
     .midnight { background: linear-gradient(135deg, #172447, #4da3ff); }

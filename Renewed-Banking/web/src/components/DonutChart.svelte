@@ -47,7 +47,7 @@
     }
     .withdraw {
         stroke: #7ef6ff;
-        filter: drop-shadow(0 0 6px rgba(61, 255, 240, 0.6));
+        filter: none;
     }
     .deposit {
         stroke: #1d6f78;

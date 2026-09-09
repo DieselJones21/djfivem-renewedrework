@@ -1,14 +1,15 @@
 <script lang="ts">
     import Logo from "./Logo.svelte";
-    import { page, t, visibility, popupDetails } from "../store/stores";
+    import { isBanker, page, pendingLoans, t, visibility, popupDetails } from "../store/stores";
     import { fetchNui } from "../utils/fetchNui";
     import type { PageId } from "../types";
 
-    const nav: PageId[] = ["overview", "transactions", "bills", "card", "accounts"];
+    const nav: PageId[] = ["overview", "transactions", "bills", "loans", "card", "accounts"];
     const icons: Record<PageId, string> = {
-        overview: "fa-chart-pie",
+        overview: "fa-house",
         transactions: "fa-arrow-right-arrow-left",
         bills: "fa-file-invoice-dollar",
+        loans: "fa-hand-holding-dollar",
         card: "fa-credit-card",
         accounts: "fa-wallet",
     };
@@ -21,12 +22,15 @@
 </script>
 
 <aside>
-    <Logo />
+    <Logo compact />
     <nav>
         {#each nav as id}
             <button class:active={$page === id} on:click={() => page.set(id)}>
                 <i class="fa-solid {icons[id]}"></i>
                 <span>{$t[id]}</span>
+                {#if id === "loans" && $isBanker && $pendingLoans.length}
+                    <em>{$pendingLoans.length}</em>
+                {/if}
             </button>
         {/each}
     </nav>
@@ -38,62 +42,63 @@
 
 <style>
     aside {
-        width: 210px;
-        flex: 0 0 210px;
-        background: linear-gradient(180deg, rgba(8, 12, 16, 0.96), rgba(5, 8, 12, 0.96));
-        border-right: 1px solid var(--line);
+        width: 118px;
+        flex: 0 0 118px;
+        background: rgba(8, 10, 14, 0.55);
+        border-right: 1px solid rgba(215, 222, 230, 0.08);
         display: flex;
         flex-direction: column;
-        padding: 0.75rem 0.7rem 1rem;
-        position: relative;
-    }
-    aside::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at 20% 0%, rgba(61, 255, 240, 0.08), transparent 46%);
-        pointer-events: none;
-    }
-    nav,
-    .exit {
-        position: relative;
-        z-index: 1;
+        padding: 0.35rem 0.45rem 0.7rem;
     }
     nav {
         display: flex;
         flex-direction: column;
-        gap: 0.35rem;
-        margin-top: 0.4rem;
+        gap: 0.28rem;
+        margin-top: 0.2rem;
         flex: 1;
     }
     nav button,
     .exit {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 0.7rem;
-        padding: 0.72rem 0.85rem;
-        border-radius: 12px;
-        color: #c4ccd6;
+        gap: 0.28rem;
+        padding: 0.62rem 0.3rem;
+        border-radius: 16px;
+        color: #c5cdd6;
         font-weight: 650;
-        font-size: 0.9rem;
-        text-align: left;
+        font-size: 0.68rem;
+        position: relative;
     }
     nav button i {
-        width: 1.1rem;
-        text-align: center;
-        color: var(--cyan);
+        font-size: 1.05rem;
+        color: var(--chrome);
     }
     nav button.active,
     nav button:hover {
-        background: linear-gradient(180deg, rgba(61, 255, 240, 0.18), rgba(61, 255, 240, 0.08));
+        background: rgba(61, 255, 240, 0.14);
         color: #fff;
-        box-shadow: inset 0 0 0 1px rgba(61, 255, 240, 0.22);
+    }
+    nav button.active i {
+        color: var(--cyan);
+    }
+    nav button em {
+        position: absolute;
+        top: 0.28rem;
+        right: 0.35rem;
+        min-width: 1rem;
+        height: 1rem;
+        border-radius: 99px;
+        background: var(--cyan);
+        color: #04221e;
+        font-style: normal;
+        font-size: 0.58rem;
+        display: grid;
+        place-items: center;
+        padding: 0 0.2rem;
     }
     .exit {
         color: #ff8aa0;
         margin-top: auto;
-    }
-    .exit:hover {
-        background: var(--red-dim);
     }
 </style>

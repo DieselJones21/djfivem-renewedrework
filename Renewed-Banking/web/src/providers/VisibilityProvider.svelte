@@ -12,6 +12,10 @@
         translations,
         currency,
         page,
+        loans,
+        pendingLoans,
+        isBanker,
+        loanConfig,
     } from "../store/stores";
     import { FALLBACK } from "../i18n/fallback";
     import { useNuiEvent } from "../utils/useNuiEvent";
@@ -30,6 +34,10 @@
         visibility.set(data.status);
         loading.set(Boolean(data.loading));
         atm.set(Boolean(data.atm));
+        loans.set(data.loans || []);
+        pendingLoans.set(data.pendingLoans || []);
+        isBanker.set(Boolean(data.isBanker));
+        if (data.loanConfig) loanConfig.set(data.loanConfig);
         page.set("overview");
     });
 
@@ -60,8 +68,9 @@
             if (e.key === "1") page.set("overview");
             if (e.key === "2") page.set("transactions");
             if (e.key === "3") page.set("bills");
-            if (e.key === "4") page.set("card");
-            if (e.key === "5") page.set("accounts");
+            if (e.key === "4") page.set("loans");
+            if (e.key === "5") page.set("card");
+            if (e.key === "6") page.set("accounts");
         };
 
         window.addEventListener("keydown", keyHandler);
