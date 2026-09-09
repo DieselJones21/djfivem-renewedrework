@@ -154,12 +154,11 @@ ul {
     letter-spacing: 0.04em;
     text-transform: uppercase;
     font-size: 0.78rem;
-    transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .btn:hover:not(:disabled) {
-    transform: translateY(-1px);
-    filter: brightness(1.08);
+    filter: none;
 }
 
 .btn:disabled {
@@ -170,7 +169,7 @@ ul {
 .btn-cyan {
     background: linear-gradient(180deg, #5cffef 0%, #1ad7c2 100%);
     color: #04221e;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.28);
+    box-shadow: none;
 }
 
 .btn-green {
@@ -216,7 +215,7 @@ ul {
     border: 1px solid var(--line);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(8px);
 }
 
 .section-title {

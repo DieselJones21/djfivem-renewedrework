@@ -41,7 +41,7 @@
         padding: 1.1rem 1.2rem 1rem;
         min-height: 168px;
         color: #f7fdff;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -55,7 +55,7 @@
         position: absolute;
         inset: auto -20% -40% 30%;
         height: 140%;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.16), transparent 60%);
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 58%);
         transform: rotate(18deg);
         pointer-events: none;
     }
@@ -150,7 +150,6 @@
     }
     .mark span:last-child {
         right: 0;
-        background: rgba(61, 255, 240, 0.7);
-        mix-blend-mode: screen;
+        background: rgba(61, 255, 240, 0.55);
     }
 </style>
