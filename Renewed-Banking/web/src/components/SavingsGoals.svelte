@@ -10,10 +10,10 @@
     let contributeAmt = "";
     let selected: string | null = null;
 
-    $: goals = persist.read<SavingsGoal[]>(`envy-bank-goals-${accountId}`, []);
+    $: goals = persist.read<SavingsGoal[]>(`rebel-bank-goals-${accountId}`, []);
 
     function save(next: SavingsGoal[]) {
-        persist.write(`envy-bank-goals-${accountId}`, next);
+        persist.write(`rebel-bank-goals-${accountId}`, next);
         goals = next;
     }
 
@@ -109,7 +109,7 @@
     .bar i {
         display: block;
         height: 100%;
-        background: linear-gradient(90deg, #1ad7c2, #7ef6ff);
+        background: linear-gradient(90deg, #9a1c1c, #d7dee6);
         box-shadow: none;
     }
     footer {

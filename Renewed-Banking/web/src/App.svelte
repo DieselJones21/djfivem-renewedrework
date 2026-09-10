@@ -94,9 +94,9 @@
                         ],
                     },
                     {
-                        id: "envy-crew",
+                        id: "rebel-crew",
                         type: "Organization",
-                        name: "Envy Crew",
+                        name: "Rebel Crew",
                         frozen: 0,
                         amount: 89000,
                         creator: "257636",

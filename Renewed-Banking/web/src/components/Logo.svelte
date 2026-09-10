@@ -3,10 +3,10 @@
 </script>
 
 <div class="logo" class:compact>
-    <img src="./img/envy-logo.png" alt="Envy Roleplay" />
+    <img src="./img/rebel-logo.png" alt="Rebel Roleplay" />
     {#if !compact}
         <div class="wordmark">
-            <span class="bank">ENVY BANK</span>
+            <span class="bank">REBEL BANK</span>
             <span class="sub">ROLEPLAY</span>
         </div>
     {/if}
@@ -49,6 +49,6 @@
         padding: 0.15rem 0.1rem 0.35rem;
     }
     .compact img {
-        width: 5.6rem;
+        width: 6.6rem;
     }
 </style>

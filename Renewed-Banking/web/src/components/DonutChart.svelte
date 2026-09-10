@@ -46,11 +46,11 @@
         stroke: rgba(255, 255, 255, 0.08);
     }
     .withdraw {
-        stroke: #7ef6ff;
+        stroke: #d7dee6;
         filter: none;
     }
     .deposit {
-        stroke: #1d6f78;
+        stroke: #8b1e2d;
     }
     text {
         transform: rotate(90deg);
@@ -80,6 +80,6 @@
         border-radius: 50%;
         margin-right: 0.4rem;
     }
-    .w { background: #7ef6ff; }
-    .d { background: #1d6f78; }
+    .w { background: #d7dee6; }
+    .d { background: #8b1e2d; }
 </style>

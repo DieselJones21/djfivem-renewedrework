@@ -22,12 +22,12 @@ const identity: string = atob("UmVuZXdlZC1CYW5raW5n");
 function mockTransaction(partial: Partial<Transaction>): Transaction {
     return {
         trans_id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
-        title: "Envy Bank",
+        title: "Rebel Bank",
         amount: 0,
         trans_type: "deposit",
         receiver: "You",
         message: "",
-        issuer: "Envy Bank",
+        issuer: "Rebel Bank",
         time: Math.floor(Date.now() / 1000),
         ...partial,
     };
@@ -136,8 +136,8 @@ function mockLoan(eventName: string, data: any) {
                     amount: loan.amount,
                     trans_type: "deposit",
                     receiver: target.name,
-                    issuer: "Envy Bank",
-                    message: "Approved Envy Bank loan",
+                    issuer: "Rebel Bank",
+                    message: "Approved Rebel Bank loan",
                 }));
             }
             return { ...loan, status: "active", bankerName: "Preview Banker", decidedAt: Math.floor(Date.now() / 1000) };

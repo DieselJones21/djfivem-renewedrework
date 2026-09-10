@@ -118,7 +118,7 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: radial-gradient(circle at 35% 35%, #6ee7ff, #123 70%);
+        background: radial-gradient(circle at 35% 35%, #f2f5f7, #4a5158 70%);
         transform: translateY(-50%);
         box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
     }

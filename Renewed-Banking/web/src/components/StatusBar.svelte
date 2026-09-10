@@ -17,7 +17,7 @@
 
 <div class="bar">
     <span class="time">{clock}</span>
-    <span class="center">{$t.envy_bank}</span>
+    <span class="center">{$t.bank_mark}</span>
     <span class="sys">
         <i class="fa-solid fa-wifi"></i>
         <i class="fa-solid fa-signal"></i>

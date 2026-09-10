@@ -73,4 +73,4 @@ export interface LoanConfig {
 }
 
 export type PageId = "overview" | "transactions" | "bills" | "loans" | "card" | "accounts";
-export type CardSkin = "envy" | "midnight" | "chrome" | "vice" | "gold" | "obsidian";
+export type CardSkin = "rebel" | "midnight" | "chrome" | "vice" | "gold" | "obsidian";

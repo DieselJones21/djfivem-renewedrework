@@ -76,11 +76,11 @@
     }
     nav button.active,
     nav button:hover {
-        background: rgba(61, 255, 240, 0.14);
+        background: var(--crimson-dim);
         color: #fff;
     }
     nav button.active i {
-        color: var(--cyan);
+        color: var(--chrome);
     }
     nav button em {
         position: absolute;
@@ -89,8 +89,8 @@
         min-width: 1rem;
         height: 1rem;
         border-radius: 99px;
-        background: var(--cyan);
-        color: #04221e;
+        background: var(--crimson);
+        color: #fff;
         font-style: normal;
         font-size: 0.58rem;
         display: grid;

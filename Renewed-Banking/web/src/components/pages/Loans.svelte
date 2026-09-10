@@ -172,8 +172,8 @@
     }
     .count {
         margin-left: 0.35rem;
-        background: var(--cyan);
-        color: #04221e;
+        background: var(--crimson);
+        color: #fff;
         border-radius: 99px;
         padding: 0 0.4rem;
         font-size: 0.68rem;

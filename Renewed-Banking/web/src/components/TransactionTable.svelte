@@ -69,7 +69,7 @@
         background: transparent;
     }
     .row:hover {
-        background: rgba(61, 255, 240, 0.05);
+        background: rgba(198, 40, 40, 0.06);
     }
     .who {
         display: flex;

@@ -12,10 +12,10 @@
     let category = "other";
 
     $: account = $accounts.find((item) => item.id === $activeAccount) || $accounts[0];
-    $: bills = persist.read<SavedBill[]>(`envy-bank-bills-${account?.id || "default"}`, []);
+    $: bills = persist.read<SavedBill[]>(`rebel-bank-bills-${account?.id || "default"}`, []);
 
     function save(next: SavedBill[]) {
-        persist.write(`envy-bank-bills-${account?.id || "default"}`, next);
+        persist.write(`rebel-bank-bills-${account?.id || "default"}`, next);
         bills = next;
     }
 

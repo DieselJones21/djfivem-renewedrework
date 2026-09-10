@@ -1,6 +1,6 @@
-# Renewed-Banking — Envy Roleplay Rework
+# Renewed-Banking — Rebel Roleplay Rework
 
-Drop-in UI rework of [Renewed-Banking](https://github.com/Renewed-Scripts/Renewed-Banking) themed for **Envy Roleplay**.
+Drop-in UI rework of [Renewed-Banking](https://github.com/Renewed-Scripts/Renewed-Banking) themed for **Rebel Roleplay**.
 
 The resource folder is named **`Renewed-Banking` on purpose**. Do not rename it. Every existing script that uses `exports['Renewed-Banking']:...` keeps working.
 
@@ -18,7 +18,7 @@ This is an adapted work of Renewed-Banking by uShifty / Renewed-Scripts, license
 
 The Lua exports, callbacks, SQL, and NUI event names are unchanged. Only the interface and branding are new.
 
-- Envy Roleplay cyan / chrome / black theme with the Envy logo
+- Rebel Roleplay chrome / crimson / black / white theme with the Rebel logo
 - Overview dashboard: stats, donut split, recent tables, inline withdraw / deposit / transfer
 - Digital debit card with IBAN, copy-to-clipboard, and card skins
 - Fast transfer plus recent recipients
