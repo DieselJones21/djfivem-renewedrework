@@ -10,13 +10,13 @@
 
     export let requestConfirm: (opts: any) => void;
 
-    const skins: CardSkin[] = ["envy", "midnight", "chrome", "vice", "gold", "obsidian"];
+    const skins: CardSkin[] = ["rebel", "midnight", "chrome", "vice", "gold", "obsidian"];
     let iban = "";
     let amount = "";
     let note = "";
 
     $: account = $accounts.find((item) => item.id === $activeAccount) || $accounts[0];
-    $: recipients = persist.read<RecentRecipient[]>("envy-bank-recipients", []);
+    $: recipients = persist.read<RecentRecipient[]>("rebel-bank-recipients", []);
 
     function copy() {
         if (!account) return;
@@ -121,10 +121,10 @@
         border-color: #fff;
         box-shadow: none;
     }
-    .envy { background: linear-gradient(135deg, #0e6f70, #3dfff0); }
+    .rebel { background: linear-gradient(135deg, #4a1518, #c8d0d8); }
     .midnight { background: linear-gradient(135deg, #172447, #4da3ff); }
     .chrome { background: linear-gradient(135deg, #8b959f, #d5dee6); }
-    .vice { background: linear-gradient(135deg, #7a1ea3, #00d4c8); }
+    .vice { background: linear-gradient(135deg, #7a1e28, #c8d0d8); }
     .gold { background: linear-gradient(135deg, #8a6a28, #e6c57a); }
     .obsidian { background: linear-gradient(135deg, #1a1d22, #4a5560); }
     .copy {

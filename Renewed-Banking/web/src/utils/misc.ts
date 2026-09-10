@@ -21,11 +21,11 @@ export function formatMoney(number: number, hidden = false) {
 
 export function formatIban(id: string) {
     const clean = String(id || "").replace(/\s+/g, "");
-    if (!clean) return "ENVY 00 000000";
+    if (!clean) return "REBEL 00 000000";
     if (/^\d+$/.test(clean) && clean.length <= 8) {
-        return `ENVY 00 ${clean}`;
+        return `REBEL 00 ${clean}`;
     }
-    return `ENVY ${clean.toUpperCase()}`;
+    return `REBEL ${clean.toUpperCase()}`;
 }
 
 export function lastFour(id: string) {
@@ -34,7 +34,7 @@ export function lastFour(id: string) {
 }
 
 export function initials(name: string) {
-    const parts = String(name || "EB").trim().split(/\s+/);
+    const parts = String(name || "RB").trim().split(/\s+/);
     if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
     return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 }

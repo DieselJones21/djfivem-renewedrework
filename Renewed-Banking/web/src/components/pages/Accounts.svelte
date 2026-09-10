@@ -89,8 +89,8 @@
         border-radius: 50%;
         display: grid;
         place-items: center;
-        background: linear-gradient(180deg, #5cffef, #1aaea4);
-        color: #041614;
+        background: linear-gradient(180deg, #f4f7fa, #9aa4ae);
+        color: #12161b;
         font-style: normal;
         font-weight: 800;
     }

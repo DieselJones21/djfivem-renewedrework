@@ -2,14 +2,14 @@
     import { cardSkin, t } from "../store/stores";
     import { cardExpiry, formatIban, lastFour } from "../utils/misc";
 
-    export let name = "Envy Client";
+    export let name = "Rebel Client";
     export let id = "000000";
     export let large = false;
 </script>
 
 <article class="card {$cardSkin}" class:large>
     <div class="card-top">
-        <span>{$t.envy_bank}</span>
+        <span>{$t.bank_mark}</span>
         <span class="contactless"><i class="fa-solid fa-wifi"></i></span>
     </div>
     <div class="chip-row">
@@ -59,8 +59,8 @@
         transform: rotate(18deg);
         pointer-events: none;
     }
-    .envy {
-        background: linear-gradient(135deg, #08343a 0%, #0e6f70 42%, #19d6c8 100%);
+    .rebel {
+        background: linear-gradient(135deg, #1a0a0c 0%, #4a1518 46%, #c8d0d8 100%);
     }
     .midnight {
         background: linear-gradient(135deg, #0b1020 0%, #172447 52%, #2a3d7a 100%);
@@ -70,7 +70,7 @@
         color: #11161c;
     }
     .vice {
-        background: linear-gradient(135deg, #1a0b2e 0%, #7a1ea3 50%, #00d4c8 100%);
+        background: linear-gradient(135deg, #1a0b10 0%, #7a1e28 50%, #c8d0d8 100%);
     }
     .gold {
         background: linear-gradient(135deg, #3a2a12 0%, #8a6a28 48%, #e6c57a 100%);
@@ -150,6 +150,6 @@
     }
     .mark span:last-child {
         right: 0;
-        background: rgba(61, 255, 240, 0.55);
+        background: rgba(215, 222, 230, 0.7);
     }
 </style>

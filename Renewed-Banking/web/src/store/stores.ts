@@ -10,8 +10,8 @@ export const activeAccount = writable<string | null>(null);
 export const atm = writable(false);
 export const currency = writable("USD");
 export const page = writable<PageId>("overview");
-export const hideBalance = writable(persist.read("envy-bank-hide-balance", false));
-export const cardSkin = writable<CardSkin>(persist.read("envy-bank-card-skin", "envy"));
+export const hideBalance = writable(persist.read("rebel-bank-hide-balance", false));
+export const cardSkin = writable<CardSkin>(persist.read("rebel-bank-card-skin", "rebel"));
 
 export const popupDetails = writable({
     account: {} as Account | Record<string, never>,
@@ -43,5 +43,5 @@ export const t = derived(translations, (dict) => {
     });
 });
 
-hideBalance.subscribe((value) => persist.write("envy-bank-hide-balance", value));
-cardSkin.subscribe((value) => persist.write("envy-bank-card-skin", value));
+hideBalance.subscribe((value) => persist.write("rebel-bank-hide-balance", value));
+cardSkin.subscribe((value) => persist.write("rebel-bank-card-skin", value));

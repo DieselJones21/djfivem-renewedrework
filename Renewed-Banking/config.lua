@@ -7,9 +7,9 @@ Config = {
     currency = 'USD', -- USD, EUR, GBP ect.....
     blip = {
         sprite = 108,
-        color = 3, -- cyan/blue to match Envy branding
+        color = 1, -- red to match Rebel branding
         scale = 0.80,
-        label = 'Envy Bank'
+        label = 'Rebel Bank'
     },
     -- Personal and job loans must be accepted by a player with this job
     loans = {

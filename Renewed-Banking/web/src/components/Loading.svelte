@@ -1,8 +1,8 @@
 <section class="loading-container">
     <div class="box">
-        <img src="./img/envy-logo.png" alt="Envy" />
+        <img src="./img/rebel-logo.png" alt="Rebel Roleplay" />
         <div class="bar"><i></i></div>
-        <p>Loading Envy Bank...</p>
+        <p>Loading Rebel Bank...</p>
     </div>
 </section>
 
@@ -25,7 +25,7 @@
         box-shadow: var(--shadow);
     }
     img {
-        width: 220px;
+        width: 280px;
         margin: 0 auto 1rem;
         filter: none;
     }
@@ -39,7 +39,7 @@
         display: block;
         height: 100%;
         width: 40%;
-        background: linear-gradient(90deg, #1ad7c2, #7ef6ff);
+        background: linear-gradient(90deg, #9a1c1c, #d7dee6);
         animation: load 1.1s ease-in-out infinite;
     }
     p {

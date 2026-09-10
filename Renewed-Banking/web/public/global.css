@@ -5,13 +5,15 @@
     --bg-3: #171e29;
     --panel: rgba(14, 18, 26, 0.78);
     --panel-solid: #10151d;
-    --line: rgba(184, 230, 226, 0.12);
-    --line-strong: rgba(62, 255, 240, 0.35);
+    --line: rgba(215, 222, 230, 0.12);
+    --line-strong: rgba(198, 40, 40, 0.42);
     --text: #f3f7fb;
     --muted: #8d97a8;
-    --cyan: #3dfff0;
-    --cyan-2: #2ee6c8;
-    --cyan-dim: rgba(61, 255, 240, 0.14);
+    --cyan: #d7dee6;
+    --cyan-2: #b8c2cc;
+    --cyan-dim: rgba(215, 222, 230, 0.12);
+    --crimson: #c62828;
+    --crimson-dim: rgba(198, 40, 40, 0.16);
     --chrome: #d7dee6;
     --green: #3ddc97;
     --green-dim: rgba(61, 220, 151, 0.14);
@@ -81,7 +83,7 @@ ul {
 }
 
 .scroller::-webkit-scrollbar-thumb {
-    background: rgba(61, 255, 240, 0.25);
+    background: rgba(198, 40, 40, 0.45);
     border-radius: 99px;
 }
 
@@ -167,8 +169,8 @@ ul {
 }
 
 .btn-cyan {
-    background: linear-gradient(180deg, #5cffef 0%, #1ad7c2 100%);
-    color: #04221e;
+    background: linear-gradient(180deg, #de3a3a 0%, #9a1c1c 100%);
+    color: #fff8f8;
     box-shadow: none;
 }
 

@@ -1,4 +1,4 @@
-# Envy Roleplay — Renewed Banking Rework
+# Rebel Roleplay — Renewed Banking Rework
 
 FiveM banking UI rework based on open-source [Renewed-Banking](https://github.com/Renewed-Scripts/Renewed-Banking).
 
