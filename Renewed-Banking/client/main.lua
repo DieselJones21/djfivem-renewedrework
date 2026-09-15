@@ -38,6 +38,7 @@ local function openBankUI(isAtm)
 end
 
 RegisterNetEvent('Renewed-Banking:client:openBankUI', function(data)
+    data = type(data) == 'table' and data or {}
     local txt = data.atm and locale('open_atm') or locale('open_bank')
     TaskStartScenarioInPlace(PlayerPed, 'PROP_HUMAN_ATM', 0, true)
     if progressBar({
@@ -78,6 +79,115 @@ end)
 
 RegisterCommand('closeBankUI', function() nuiHandler(false) end, false)
 
+local function interactReady()
+    local name = Config.interact and Config.interact.resource or 'interact'
+    return GetResourceState(name) == 'started'
+end
+
+local function targetReady()
+    return GetResourceState('ox_target') == 'started'
+end
+
+local function interactExport()
+    return exports[Config.interact and Config.interact.resource or 'interact']
+end
+
+local function registerAtms()
+    if interactReady() then
+        local cfg = Config.interact
+        for i = 1, #Config.atms do
+            interactExport():AddModelInteraction({
+                model = Config.atms[i],
+                offset = vec3(0.0, 0.0, 0.95),
+                name = 'renewed_banking_atm',
+                id = ('renewed_banking_atm_%s'):format(i),
+                distance = cfg.atmDistance,
+                interactDst = cfg.atmInteract,
+                ignoreLos = cfg.ignoreLos,
+                options = {{
+                    label = locale('view_bank'),
+                    action = function()
+                        TriggerEvent('Renewed-Banking:client:openBankUI', { atm = true })
+                    end
+                }}
+            })
+        end
+        return
+    end
+
+    if targetReady() then
+        exports.ox_target:addModel(Config.atms, {{
+            name = 'renewed_banking_openui',
+            event = 'Renewed-Banking:client:openBankUI',
+            icon = 'fas fa-money-check',
+            label = locale('view_bank'),
+            atm = true,
+            canInteract = function(_, distance)
+                return distance < (Config.interact and Config.interact.atmInteract or 2.5)
+            end
+        }})
+        return
+    end
+
+    print('^3[Renewed-Banking]^0 Start darktrovx/interact (resource name `interact`) so banks and ATMs can be used.')
+end
+
+local function removeAtms()
+    if interactReady() then
+        for i = 1, #Config.atms do
+            pcall(function()
+                interactExport():RemoveModelInteraction(Config.atms[i], ('renewed_banking_atm_%s'):format(i))
+            end)
+        end
+    elseif targetReady() then
+        exports.ox_target:removeModel(Config.atms, {'renewed_banking_openui'})
+    end
+end
+
+local function tellerOptions(createAccounts)
+    local options = {{
+        label = locale('view_bank'),
+        action = function()
+            TriggerEvent('Renewed-Banking:client:openBankUI', { atm = false })
+        end
+    }}
+    if createAccounts then
+        options[#options+1] = {
+            label = locale('manage_bank'),
+            action = function()
+                TriggerEvent('Renewed-Banking:client:accountManagmentMenu')
+            end
+        }
+    end
+    return options
+end
+
+local function addTellerInteract(ped, index, createAccounts)
+    if not ped or ped == 0 then return end
+    local cfg = Config.interact
+    interactExport():AddLocalEntityInteraction({
+        entity = ped,
+        name = 'renewed_banking_teller',
+        id = ('renewed_banking_teller_%s'):format(index),
+        distance = cfg.tellerDistance,
+        interactDst = cfg.tellerInteract,
+        ignoreLos = cfg.ignoreLos,
+        offset = cfg.tellerOffset,
+        options = tellerOptions(createAccounts)
+    })
+end
+
+local function removeTellerInteract(ped, index)
+    if not ped or ped == 0 then return end
+    if interactReady() then
+        pcall(function()
+            interactExport():RemoveLocalEntityInteraction(ped, ('renewed_banking_teller_%s'):format(index))
+        end)
+    elseif targetReady() then
+        exports.ox_target:removeLocalEntity(ped, {'renewed_banking_accountmng', 'renewed_banking_openui'})
+    end
+end
+
 local bankActions = {'deposit', 'withdraw', 'transfer'}
 CreateThread(function ()
     for k=1, #bankActions do
@@ -93,16 +203,7 @@ CreateThread(function ()
             cb(result)
         end)
     end
-    exports.ox_target:addModel(Config.atms, {{
-        name = 'renewed_banking_openui',
-        event = 'Renewed-Banking:client:openBankUI',
-        icon = 'fas fa-money-check',
-        label = locale('view_bank'),
-        atm = true,
-        canInteract = function(_, distance)
-            return distance < 2.5
-        end
-    }})
+    registerAtms()
 end)
 
 local pedSpawned = false
@@ -117,25 +218,8 @@ function CreatePeds()
             model = joaat(Config.peds[k].model),
             heading = coords.w,
             ped = nil,
-            targetOptions = {{
-                name = 'renewed_banking_accountmng',
-                event = 'Renewed-Banking:client:accountManagmentMenu',
-                icon = 'fas fa-money-check',
-                label = locale('manage_bank'),
-                atm = false,
-                canInteract = function(_, distance)
-                    return distance < 4.5 and Config.peds[k].createAccounts
-                end
-            },{
-                name = 'renewed_banking_openui',
-                event = 'Renewed-Banking:client:openBankUI',
-                icon = 'fas fa-money-check',
-                label = locale('view_bank'),
-                atm = false,
-                canInteract = function(_, distance)
-                    return distance < 4.5
-                end
-            }}
+            bankIndex = k,
+            createAccounts = Config.peds[k].createAccounts
         })
 
         function pedPoint:onEnter()
@@ -149,11 +233,38 @@ function CreatePeds()
             FreezeEntityPosition(self.ped, true)
             SetEntityInvincible(self.ped, true)
             SetBlockingOfNonTemporaryEvents(self.ped, true)
-            exports.ox_target:addLocalEntity(self.ped, self.targetOptions)
+
+            if interactReady() then
+                addTellerInteract(self.ped, self.bankIndex, self.createAccounts)
+            elseif targetReady() then
+                local reach = Config.interact and Config.interact.tellerInteract or 6.0
+                exports.ox_target:addLocalEntity(self.ped, {
+                    {
+                        name = 'renewed_banking_accountmng',
+                        event = 'Renewed-Banking:client:accountManagmentMenu',
+                        icon = 'fas fa-money-check',
+                        label = locale('manage_bank'),
+                        atm = false,
+                        canInteract = function(_, distance)
+                            return distance < reach and self.createAccounts
+                        end
+                    },
+                    {
+                        name = 'renewed_banking_openui',
+                        event = 'Renewed-Banking:client:openBankUI',
+                        icon = 'fas fa-money-check',
+                        label = locale('view_bank'),
+                        atm = false,
+                        canInteract = function(_, distance)
+                            return distance < reach
+                        end
+                    }
+                })
+            end
         end
 
         function pedPoint:onExit()
-            exports.ox_target:removeLocalEntity(self.ped, self.advanced and 'renewed_banking_accountmng' or 'renewed_banking_openui')
+            removeTellerInteract(self.ped, self.bankIndex)
             if DoesEntityExist(self.ped) then
                 DeletePed(self.ped)
             end
@@ -177,6 +288,9 @@ function DeletePeds()
     if not pedSpawned then return end
     local points = lib.points.getAllPoints()
     for i = 1, #points do
+        if points[i].ped then
+            removeTellerInteract(points[i].ped, points[i].bankIndex)
+        end
         if DoesEntityExist(points[i].ped) then
             DeletePed(points[i].ped)
         end
@@ -190,7 +304,7 @@ end
 
 AddEventHandler('onResourceStop', function(resource)
     if resource ~= GetCurrentResourceName() then return end
-    exports.ox_target:removeModel(Config.atms, {'renewed_banking_openui'})
+    removeAtms()
     DeletePeds()
 end)
 

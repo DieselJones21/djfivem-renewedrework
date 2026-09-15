@@ -75,7 +75,7 @@
         color: inherit;
     }
     .card.active {
-        box-shadow: inset 0 0 0 1px var(--line-strong);
+        box-shadow: inset 0 0 0 1px var(--line-strong), var(--glow);
     }
     .who {
         display: flex;
@@ -89,8 +89,8 @@
         border-radius: 50%;
         display: grid;
         place-items: center;
-        background: linear-gradient(180deg, #f4f7fa, #9aa4ae);
-        color: #12161b;
+        background: linear-gradient(180deg, #ff6eb4, #ff2d8a);
+        color: #2a0614;
         font-style: normal;
         font-weight: 800;
     }

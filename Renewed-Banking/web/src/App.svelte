@@ -94,9 +94,9 @@
                         ],
                     },
                     {
-                        id: "rebel-crew",
+                        id: "miami-crew",
                         type: "Organization",
-                        name: "Rebel Crew",
+                        name: "305 Crew",
                         frozen: 0,
                         amount: 89000,
                         creator: "257636",

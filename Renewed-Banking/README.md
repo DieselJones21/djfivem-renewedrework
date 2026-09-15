@@ -1,6 +1,6 @@
-# Renewed-Banking — Rebel Roleplay Rework
+# Renewed-Banking — The 305 Rework
 
-Drop-in UI rework of [Renewed-Banking](https://github.com/Renewed-Scripts/Renewed-Banking) themed for **Rebel Roleplay**.
+Drop-in UI rework of [Renewed-Banking](https://github.com/Renewed-Scripts/Renewed-Banking) themed for **The 305**.
 
 The resource folder is named **`Renewed-Banking` on purpose**. Do not rename it. Every existing script that uses `exports['Renewed-Banking']:...` keeps working.
 
@@ -11,14 +11,15 @@ This is an adapted work of Renewed-Banking by uShifty / Renewed-Scripts, license
 1. Copy the `Renewed-Banking` folder into your server `resources` directory.
 2. Keep the folder name exactly `Renewed-Banking`.
 3. Import `Renewed-Banking.sql` if you are not already running Renewed-Banking.
-4. Add `ensure oxmysql`, `ensure ox_lib`, `ensure ox_target`, then `ensure Renewed-Banking`.
+4. Add `ensure oxmysql`, `ensure ox_lib`, `ensure interact` ([darktrovx/interact](https://github.com/darktrovx/interact)), then `ensure Renewed-Banking`. `ox_target` is only used if `interact` is not started.
 5. Replace any `qb-management` / `qb-banking` / `esx_society` money exports with the Renewed-Banking exports below.
 
 ## What changed in this rework
 
 The Lua exports, callbacks, SQL, and NUI event names are unchanged. Only the interface and branding are new.
 
-- Rebel Roleplay chrome / crimson / black / white theme with the Rebel logo
+- The 305 pink / chrome / black theme with glow, the 305 logo, and iPad chrome
+- darktrovx/interact for banks and ATMs, with extra teller reach so counters do not block you
 - Overview dashboard: stats, donut split, recent tables, inline withdraw / deposit / transfer
 - Digital debit card with IBAN, copy-to-clipboard, and card skins
 - Fast transfer plus recent recipients

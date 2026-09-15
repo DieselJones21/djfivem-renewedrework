@@ -1,9 +1,9 @@
 fx_version 'cerulean'
 game 'gta5'
-version '2.4.0'
+version '2.5.0'
 
-description 'Renewed Banking — Rebel Roleplay UI rework'
-author 'uShifty (original) / Rebel Roleplay rework'
+description 'Renewed Banking — The 305 UI rework'
+author 'uShifty (original) / The 305 rework'
 
 lua54 'yes'
 
