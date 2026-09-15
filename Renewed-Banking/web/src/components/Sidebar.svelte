@@ -76,11 +76,13 @@
     }
     nav button.active,
     nav button:hover {
-        background: var(--crimson-dim);
+        background: rgba(255, 45, 138, 0.18);
         color: #fff;
+        box-shadow: inset 0 0 0 1px rgba(255, 45, 138, 0.35);
     }
     nav button.active i {
-        color: var(--chrome);
+        color: #ff6eb4;
+        filter: drop-shadow(0 0 8px rgba(255, 45, 138, 0.7));
     }
     nav button em {
         position: absolute;
@@ -89,8 +91,9 @@
         min-width: 1rem;
         height: 1rem;
         border-radius: 99px;
-        background: var(--crimson);
+        background: var(--cyan);
         color: #fff;
+        box-shadow: 0 0 10px rgba(255, 45, 138, 0.55);
         font-style: normal;
         font-size: 0.58rem;
         display: grid;

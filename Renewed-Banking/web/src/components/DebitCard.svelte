@@ -2,7 +2,7 @@
     import { cardSkin, t } from "../store/stores";
     import { cardExpiry, formatIban, lastFour } from "../utils/misc";
 
-    export let name = "Rebel Client";
+    export let name = "305 Client";
     export let id = "000000";
     export let large = false;
 </script>
@@ -41,7 +41,7 @@
         padding: 1.1rem 1.2rem 1rem;
         min-height: 168px;
         color: #f7fdff;
-        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 22px rgba(255, 45, 138, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -55,12 +55,12 @@
         position: absolute;
         inset: auto -20% -40% 30%;
         height: 140%;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 58%);
+        background: radial-gradient(circle, rgba(255, 45, 138, 0.22), transparent 58%);
         transform: rotate(18deg);
         pointer-events: none;
     }
-    .rebel {
-        background: linear-gradient(135deg, #1a0a0c 0%, #4a1518 46%, #c8d0d8 100%);
+    .miami {
+        background: linear-gradient(135deg, #1a0612 0%, #8a1458 46%, #ff2d8a 100%);
     }
     .midnight {
         background: linear-gradient(135deg, #0b1020 0%, #172447 52%, #2a3d7a 100%);
@@ -70,7 +70,7 @@
         color: #11161c;
     }
     .vice {
-        background: linear-gradient(135deg, #1a0b10 0%, #7a1e28 50%, #c8d0d8 100%);
+        background: linear-gradient(135deg, #1a0b2e 0%, #7a1ea3 50%, #ff2d8a 100%);
     }
     .gold {
         background: linear-gradient(135deg, #3a2a12 0%, #8a6a28 48%, #e6c57a 100%);
@@ -150,6 +150,6 @@
     }
     .mark span:last-child {
         right: 0;
-        background: rgba(215, 222, 230, 0.7);
+        background: rgba(255, 45, 138, 0.75);
     }
 </style>

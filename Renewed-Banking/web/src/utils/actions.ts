@@ -33,12 +33,12 @@ export async function submitBankAction(
         const result = await fetchNui(action, payload);
         if (result !== false && applyLoanPayload(result)) {
             if (action === "transfer" && payload.stateid) {
-                const recent = persist.read<RecentRecipient[]>("rebel-bank-recipients", []);
+                const recent = persist.read<RecentRecipient[]>("the305-bank-recipients", []);
                 const next = [
                     { id: payload.stateid, name: payload.stateid, lastAmount: payload.amount, lastAt: Date.now() },
                     ...recent.filter((item) => item.id !== payload.stateid),
                 ].slice(0, 8);
-                persist.write("rebel-bank-recipients", next);
+                persist.write("the305-bank-recipients", next);
             }
             playUiSound("LOCAL_PLYR_CASH_COUNTER_COMPLETE", "DLC_HEISTS_GENERAL_FRONTEND_SOUNDS");
             return result;

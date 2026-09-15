@@ -7,9 +7,19 @@ Config = {
     currency = 'USD', -- USD, EUR, GBP ect.....
     blip = {
         sprite = 108,
-        color = 1, -- red to match Rebel branding
+        color = 8, -- pink to match The 305
         scale = 0.80,
-        label = 'Rebel Bank'
+        label = 'The 305 Bank'
+    },
+    -- darktrovx/interact (resource name: interact). ox_target is used only if interact is missing.
+    interact = {
+        resource = 'interact',
+        atmDistance = 8.0,
+        atmInteract = 2.3,
+        tellerDistance = 14.0, -- how far the prompt appears
+        tellerInteract = 6.0, -- reach over bank counters
+        ignoreLos = true, -- counters block line of sight
+        tellerOffset = vec3(0.0, 0.0, 0.35)
     },
     -- Personal and job loans must be accepted by a player with this job
     loans = {

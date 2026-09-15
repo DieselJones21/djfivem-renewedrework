@@ -1,4 +1,4 @@
-# Rebel Roleplay — Renewed Banking Rework
+# The 305 — Renewed Banking Rework
 
 FiveM banking UI rework based on open-source [Renewed-Banking](https://github.com/Renewed-Scripts/Renewed-Banking).
 

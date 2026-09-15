@@ -104,9 +104,10 @@
         padding: 14px 14px 16px;
         border-radius: 36px;
         background:
-            linear-gradient(160deg, #f4f7fa 0%, #b7c0c8 18%, #8d969e 46%, #d5dde4 78%, #f7f9fb 100%);
+            linear-gradient(160deg, #fff7fb 0%, #e8b7d0 16%, #9aa3ad 46%, #f0c4d8 78%, #fbf8fb 100%);
         box-shadow:
             0 28px 80px rgba(0, 0, 0, 0.55),
+            0 0 40px rgba(255, 45, 138, 0.18),
             inset 0 1px 0 rgba(255, 255, 255, 0.75),
             inset 0 -2px 6px rgba(0, 0, 0, 0.25);
         position: relative;
@@ -118,9 +119,9 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: radial-gradient(circle at 35% 35%, #f2f5f7, #4a5158 70%);
+        background: radial-gradient(circle at 35% 35%, #ff8ec8, #6a1238 70%);
         transform: translateY(-50%);
-        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25), 0 0 10px rgba(255, 45, 138, 0.55);
     }
     .shell {
         width: 100%;
@@ -130,8 +131,10 @@
         position: relative;
         overflow: hidden;
         border-radius: 24px;
-        background: linear-gradient(180deg, #0b0f14 0%, #07090d 100%);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background:
+            radial-gradient(820px 280px at 82% -8%, rgba(255, 45, 138, 0.2), transparent 55%),
+            linear-gradient(180deg, #140810 0%, #07060a 100%);
+        border: 1px solid rgba(255, 45, 138, 0.18);
     }
     .workspace {
         flex: 1;
@@ -142,7 +145,7 @@
         width: 132px;
         height: 5px;
         border-radius: 99px;
-        background: rgba(215, 222, 230, 0.55);
+        background: rgba(255, 142, 200, 0.7);
         margin: 0.35rem auto 0.45rem;
     }
     main {

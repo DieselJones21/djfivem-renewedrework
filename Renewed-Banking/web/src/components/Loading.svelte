@@ -1,8 +1,8 @@
 <section class="loading-container">
     <div class="box">
-        <img src="./img/rebel-logo.png" alt="Rebel Roleplay" />
+        <img src="./img/the305-logo.png" alt="The 305" />
         <div class="bar"><i></i></div>
-        <p>Loading Rebel Bank...</p>
+        <p>Loading The 305 Bank...</p>
     </div>
 </section>
 
@@ -22,12 +22,12 @@
         border-radius: 18px;
         padding: 1.4rem 1.5rem 1.2rem;
         text-align: center;
-        box-shadow: var(--shadow);
+        box-shadow: var(--glow), var(--shadow);
     }
     img {
         width: 280px;
         margin: 0 auto 1rem;
-        filter: none;
+        filter: drop-shadow(0 0 18px rgba(255, 45, 138, 0.4));
     }
     .bar {
         height: 6px;
@@ -39,7 +39,7 @@
         display: block;
         height: 100%;
         width: 40%;
-        background: linear-gradient(90deg, #9a1c1c, #d7dee6);
+        background: linear-gradient(90deg, #ff2d8a, #e8eef4);
         animation: load 1.1s ease-in-out infinite;
     }
     p {

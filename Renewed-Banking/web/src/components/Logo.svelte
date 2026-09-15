@@ -3,11 +3,11 @@
 </script>
 
 <div class="logo" class:compact>
-    <img src="./img/rebel-logo.png" alt="Rebel Roleplay" />
+    <img src="./img/the305-logo.png" alt="The 305" />
     {#if !compact}
         <div class="wordmark">
-            <span class="bank">REBEL BANK</span>
-            <span class="sub">ROLEPLAY</span>
+            <span class="bank">THE 305 BANK</span>
+            <span class="sub">MIAMI</span>
         </div>
     {/if}
 </div>
@@ -23,21 +23,23 @@
     img {
         width: 100%;
         height: auto;
-        filter: none;
+        filter: drop-shadow(0 0 16px rgba(255, 45, 138, 0.45));
         object-fit: contain;
+        border-radius: 12px;
     }
     .wordmark {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: -0.4rem;
+        margin-top: -0.2rem;
     }
     .bank {
         font-family: var(--display);
-        letter-spacing: 0.28em;
-        font-size: 0.95rem;
+        letter-spacing: 0.22em;
+        font-size: 0.82rem;
         font-weight: 700;
-        color: #f7fbff;
+        color: #fff7fb;
+        text-shadow: 0 0 16px rgba(255, 45, 138, 0.55);
     }
     .sub {
         font-size: 0.62rem;
@@ -49,6 +51,6 @@
         padding: 0.15rem 0.1rem 0.35rem;
     }
     .compact img {
-        width: 6.6rem;
+        width: 6.5rem;
     }
 </style>
